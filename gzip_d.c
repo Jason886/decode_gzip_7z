@@ -42,7 +42,12 @@ cre_tmp:
     close(tmp_fd);
     tmp_fd = -1;
 
-    snprintf(command, sizeof(command), "cat %s | gzip -cd 2>/dev/null", tmp_name);
+    // 7za
+    //snprintf(command, sizeof(command), "7za x %s -so 2>/dev/null", tmp_name);
+    // gzip
+    //snprintf(command, sizeof(command), "cat %s | gzip -cd 2>/dev/null", tmp_name);
+    // zip
+    snprintf(command, sizeof(command), "unzip -p %s 2>/dev/null", tmp_name);
     pipe_buf = malloc(PIPE_BUF_SIZE); 
     if (!pipe_buf) {
         goto end;
